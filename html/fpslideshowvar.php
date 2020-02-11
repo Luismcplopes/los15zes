@@ -1,29 +1,14 @@
-<?
-Header("content-type: application/x-javascript");
-
-function returnimages($dirname=".") {
-   $pattern="\.(jpg|jpeg|png|gif|bmp)$";
-   $files = array();
-   $curimage=0;
-   if($handle = opendir($dirname)) {
-       while(false !== ($file = readdir($handle))){
-               if(preg_match ($pattern, $file)){
-		 $filedate=date ("M d, Y H:i:s", filemtime($file));
-                 echo "		[$curimage, \"$file\", \"$filedate\"],\n";
-                 $curimage++;
-               }
-       }
-       echo "		[\"placeholder\"]\n";
-       closedir($handle);
-   }
-   return($files);
+var fpslideshowvar={
+	baseurl: "http://www.javascriptkit.com/script/script2/fpslideshow/",
+	images: [
+		[0, "tropical.jpg", "Apr 26, 2010 01:11:16"],
+		[1, "legs.jpg", "Apr 26, 2010 01:11:03"],
+		[2, "fisherman.jpg", "Apr 26, 2010 01:10:51"],
+		[3, "sunset.jpg", "Apr 26, 2010 01:11:09"],
+		[4, "birds.jpg", "Apr 26, 2010 01:10:35"],
+		[5, "waterdrop.jpg", "Apr 26, 2010 01:11:24"],
+		[6, "church.jpg", "Apr 26, 2010 01:10:42"],
+		["placeholder"]
+	],
+	desc: []
 }
-
-echo "var fpslideshowvar={\n";
-echo "	baseurl: \"http://" . $_SERVER["SERVER_NAME"] . dirname($_SERVER['PHP_SELF']) . "/\",\n";
-echo "	images: [\n";
-returnimages();
-echo "	],\n";
-echo "	desc: []\n";
-echo "}\n";
-?> 
